@@ -1,0 +1,5 @@
+.vscode
+.terraform
+errored.tfstate
+secret.json
+.terraform.lock*

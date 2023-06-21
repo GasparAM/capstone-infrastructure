@@ -1,0 +1,12 @@
+---
+
+- name: Install Docker
+  become: true
+  dnf:
+    name: docker
+
+- name: Set url as env
+  become: true
+  vars:
+    url: "{{ lookup('file', 'url.txt') }}"
+  command: echo "MYSQL_URL={{url}}" >> /etc/environment
