@@ -5,6 +5,9 @@ resource "aws_launch_template" "launch" {
   key_name               = "xosqi"
   vpc_security_group_ids = [aws_security_group.tf.id]
   user_data              = filebase64("./script.sh")
+  iam_instance_profile {
+    name = var.iam_name
+  }
 
   tag_specifications {
     resource_type = "instance"

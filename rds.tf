@@ -35,7 +35,7 @@ resource "aws_secretsmanager_secret" "url" {
 
 resource "aws_secretsmanager_secret_version" "url" {
   secret_id     = aws_secretsmanager_secret.url.id
-  secret_string = "jdbc:mysql://${aws_db_instance.mysql.endpoint}/${aws_db_instance.mysql.db_name}"
+  secret_string = "{\"MYSQL_URL\":\"jdbc:mysql://${aws_db_instance.mysql.endpoint}/${aws_db_instance.mysql.db_name}\"}"
   depends_on    = [aws_db_instance.mysql]
 }
 

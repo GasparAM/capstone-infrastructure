@@ -2,6 +2,8 @@ variable "ingress_ips" {}
 
 variable "cidr_block_vpc" {}
 
+variable "iam_name" {}
+
 variable "tags" {}
 
 locals {
