@@ -1,7 +1,7 @@
 resource "aws_launch_template" "launch" {
   name_prefix            = "Terraform-ec"
-  image_id               = "ami-0577c11149d377ab7"
-  instance_type          = "t3.micro"
+  image_id               = var.ami
+  instance_type          = var.compute_instance
   key_name               = "xosqi"
   vpc_security_group_ids = [aws_security_group.tf.id]
   user_data              = filebase64("./script.sh")

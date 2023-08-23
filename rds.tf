@@ -44,16 +44,11 @@ resource "aws_db_instance" "mysql" {
   db_name           = "petclinic"
   engine            = "mysql"
   engine_version    = "5.7"
-  instance_class    = "db.t3.micro"
+  instance_class    = var.rds_instance
   username               = jsondecode(aws_secretsmanager_secret_version.secrets.secret_string)["MYSQL_USER"]
   password               = jsondecode(aws_secretsmanager_secret_version.secrets.secret_string)["MYSQL_PASS"]
   db_subnet_group_name   = aws_db_subnet_group.default.name
   parameter_group_name   = "default.mysql5.7"
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.rds.id]
-}
-
-resource "local_file" "url" {
-  content  = aws_db_instance.mysql.endpoint
-  filename = "./ansible/roles/setup/files/url.txt"
 }

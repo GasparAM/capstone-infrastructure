@@ -1,5 +1,11 @@
 variable "ingress_ips" {}
 
+variable "ami" {}
+
+variable "compute_instance" {}
+
+variable "rds_instance" {}
+
 variable "cidr_block_vpc" {}
 
 variable "iam_name" {}
