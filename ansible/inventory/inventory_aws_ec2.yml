@@ -3,6 +3,6 @@ plugin: amazon.aws.aws_ec2
 regions:
   - eu-north-1
 filters:
-  tag:Project: 2023_internship_yvn
+  tag:Matcher: capstone_infrastructure
 compose:
   ansible_host: public_ip_address
