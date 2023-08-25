@@ -4,7 +4,6 @@ resource "aws_launch_template" "launch" {
   instance_type          = var.compute_instance
   key_name               = "xosqi"
   vpc_security_group_ids = [aws_security_group.tf.id]
-  user_data              = filebase64("./script.sh")
   iam_instance_profile {
     name = var.iam_name
   }
@@ -17,9 +16,9 @@ resource "aws_launch_template" "launch" {
 }
 
 resource "aws_autoscaling_group" "autoscale" {
-  desired_capacity    = 3
-  max_size            = 3
-  min_size            = 3
+  desired_capacity    = var.asg_desired_capacity
+  max_size            = var.asg_max_capacity
+  min_size            = var.asg_min_capacity
   vpc_zone_identifier = [for subnet in aws_subnet.public : subnet.id]
 
   launch_template {

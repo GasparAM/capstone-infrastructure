@@ -1,6 +1,36 @@
 variable "ingress_ips" {}
 
-variable "ami" {}
+variable "db_name" {
+  type = string
+  default = "petclinic"
+  
+}
+
+variable "db_version" {
+  type = string
+  default = "5.7"
+  
+}
+
+variable "asg_desired_capacity" {
+  type = string
+  default = 3
+}
+
+variable "asg_min_capacity" {
+  type = string
+  default = 3
+}
+
+variable "asg_max_capacity" {
+  type = string
+  default = 3
+}
+
+variable "ami" {
+  type = string
+  default = "ami-0577c11149d377ab7"
+}
 
 variable "compute_instance" {}
 
